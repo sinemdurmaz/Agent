@@ -93,10 +93,8 @@ python ik_agen.py
 
  Benchmark ve Test Senaryoları
 Ajanın hukuki yetkinliğini ölçmek için kullanılan 3 temel kategori ve örnekler:
-Kategori,Soru Örneği,Ajanın Çözüm Yolu
-Temel Hukuk Bilgisi,"""Haftalık çalışma süresi yasal olarak en çok kaç saattir?""",kanun_ara → Madde 63'ü bul → 45 Saat
-Matematiksel Hesap,"""Brüt 20.000 TL maaşla 10 saat fazla mesai yaptım, ücreti ne kadar?""",kanun_ara (%50 oran) → calculator (20000/225 * 1.5 * 10) → ~1.333 TL
-Mantıksal Çıkarım,"""Kendi isteğimle istifa edersem kıdem tazminatı alabilir miyim?""",kanun_ara (Kıdem şartları) → İstifa durumunu analiz et → Hayır (Haklı neden yoksa)
+
+<img width="899" height="359" alt="image" src="https://github.com/user-attachments/assets/b823f242-7a99-4503-b915-7f4799e2d8b4" />
 
  Lisans
 Bu proje eğitim amaçlı geliştirilmiştir ve hukuki tavsiye niteliği taşımaz. Nihai kararlar için bir hukukçuya danışılmalıdır. MIT License altında lisanslanmıştır.
