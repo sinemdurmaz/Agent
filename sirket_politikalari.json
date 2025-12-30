@@ -1,0 +1,134 @@
+[
+    {
+        "baslik": "Standart Çalışma Saatleri",
+        "icerik": "Şirket genelinde mesai saatleri 08:30 - 17:30 arasındadır. Öğle molası 12:00-13:30 arasında 1.5 saattir. Cuma günleri 'Happy Hour' uygulaması nedeniyle mesai 16:00'da sona erer."
+    },
+    {
+        "baslik": "Fazla Mesai (Overtime) Ücretleri",
+        "icerik": "Haftalık 45 saati aşan çalışmalar fazla mesai sayılır. Hafta içi yapılan fazla mesailer saatlik ücretin 1.5 katı, hafta sonu ve resmi tatillerde yapılan çalışmalar ise saatlik ücretin 2.0 katı olarak ödenir. Yöneticiler (Manager ve üstü) fazla mesai ücreti almaz."
+    },
+    {
+        "baslik": "Uzaktan Çalışma (Remote) Kuralları",
+        "icerik": "Tam zamanlı çalışanlar haftada en fazla 3 gün evden çalışabilir. Ancak Pazartesi ve Perşembe günleri tüm ekiplerin ofiste olması zorunludur. Deneme süresindeki (ilk 2 ay) personelin uzaktan çalışma hakkı yoktur."
+    },
+    {
+        "baslik": "Stajyer Çalışma Düzeni",
+        "icerik": "Stajyerler haftada en az 3 gün ofise gelmek zorundadır. Stajyerlerin uzaktan çalışma (remote) hakkı bulunmamaktadır. Stajyer mesaisi 09:00-18:00 arasındadır."
+    },
+    {
+        "baslik": "Gece Vardiyası Tazminatı",
+        "icerik": "Akşam 20:00 ile sabah 06:00 arasındaki çalışmalar 'Gece Çalışması' kabul edilir. Bu saatlerde çalışan personele %30 ek vardiya tazminatı ödenir ve şirket tarafından eve dönüş taksi ücreti (Uber/BiTaksi fişi ile) karşılanır."
+    },
+    {
+        "baslik": "Maaş Ödeme ve Avans",
+        "icerik": "Maaşlar her ayın 1'inde ilgili banka hesabına yatar. Ayın 1'i tatile gelirse takip eden ilk iş günü ödeme yapılır. Ayın 15'inde maaşın %30'una kadar avans talep edilebilir."
+    },
+    {
+        "baslik": "Yıl Sonu Performans Primi",
+        "icerik": "Yıllık prim hesaplaması şöyledir: (Yıllık Brüt Maaş / 12) * (Performans Katsayısı). Katsayılar: Performans notu 5 (Mükemmel) için 2.5 maaş, 4 (İyi) için 1.5 maaş, 3 (Orta) için 0.5 maaş. Notu 3'ün altında olanlara prim ödenmez."
+    },
+    {
+        "baslik": "Hisse Senedi Opsiyonları (ESOP)",
+        "icerik": "Senior ve üzeri çalışanlara şirket hisse opsiyonu verilir. Hak ediş (Vesting) süresi 4 yıldır. İlk yılın sonunda %25'i hak edilir (Cliff), kalan %75 sonraki 3 yılda aylık eşit taksitlerle hak edilir."
+    },
+    {
+        "baslik": "Yabancı Dil Tazminatı",
+        "icerik": "İngilizce seviyesini belgeleyen (TOEFL 90+ veya IELTS 7.0+) personele aylık net 4.000 TL, Almanca veya Fransızca için (B2+) aylık net 3.000 TL dil tazminatı ödenir. Tazminat en fazla 2 dil için geçerlidir."
+    },
+    {
+        "baslik": "Kıdem Teşvik Bonusu",
+        "icerik": "Şirkette 5. yılını dolduranlara tek seferlik 50.000 TL, 10. yılını dolduranlara ise tek seferlik 100.000 TL sadakat bonusu ödenir."
+    },
+    {
+        "baslik": "Yemek Kartı Uygulaması",
+        "icerik": "Günlük yemek ücreti net 380 TL'dir. Bu tutar ay başında Sodexo veya Ticket kartına, o ayki iş günü sayısı kadar yüklenir. Raporlu veya izinli olunan günler için yemek ücreti yatırılmaz."
+    },
+    {
+        "baslik": "Yol Yardımı ve Servis",
+        "icerik": "Şirket servisini kullanmayan personele ikamet mesafesine göre yol yardımı yapılır. 0-15 km arası: Aylık 1.500 TL. 15-30 km arası: Aylık 2.500 TL. 30 km üzeri: Aylık 3.500 TL net ödeme yapılır."
+    },
+    {
+        "baslik": "Özel Sağlık Sigortası (ÖSS)",
+        "icerik": "Tüm çalışanlara 'Standart Yatarak Tedavi' sigortası yapılır. İsteyen çalışan maaşından aylık 1.200 TL kesinti yapılarak 'Kapsamlı Ayakta + Yatarak' paketine geçebilir. Eş ve çocuk ekletmek kişi başı aylık 800 TL'dir."
+    },
+    {
+        "baslik": "İnternet ve Fatura Desteği",
+        "icerik": "Uzaktan çalışma modeline dahil olan personele aylık 750 TL iletişim ve internet faturası desteği bordroya yansıtılarak ödenir."
+    },
+    {
+        "baslik": "Kreş ve Çocuk Yardımı",
+        "icerik": "0-6 yaş arası çocuğu olan kadın çalışanlara ve eşi çalışmayan erkek çalışanlara, çocuk başına aylık net 3.000 TL kreş yardımı ödenir. Bu yardım en fazla 2 çocuk için geçerlidir."
+    },
+    {
+        "baslik": "Spor ve İyi Yaşam Desteği",
+        "icerik": "Spor salonu üyeliği faturasını ibraz eden çalışanlara aylık 600 TL'ye kadar 'Wellbeing' ödemesi yapılır. Sigara kullanmayan personele yılda bir kez 2.000 TL 'Sağlıklı Yaşam Bonusu' verilir."
+    },
+    {
+        "baslik": "Yıllık İzin Süreleri",
+        "icerik": "Kıdemi 1-5 yıl olanlar: 14 iş günü. Kıdemi 5-15 yıl olanlar: 20 iş günü. Kıdemi 15 yıldan fazla olanlar: 26 iş günü. 50 yaş üstü çalışanlar kıdemi ne olursa olsun en az 20 gün izin hakkına sahiptir."
+    },
+    {
+        "baslik": "Mazeret İzinleri",
+        "icerik": "Evlilik İzni: 3 gün. Babalık İzni: 5 gün. Ölüm İzni (1. derece yakın): 3 gün. Taşınma İzni: Yılda 1 gün. Regl İzni: Kadın çalışanlar ayda 1 gün ücretli izin kullanabilir."
+    },
+    {
+        "baslik": "Doğum Günü İzni",
+        "icerik": "Çalışanlar, doğum günlerinin olduğu hafta içerisinde diledikleri 1 gün ücretli izin kullanabilirler."
+    },
+    {
+        "baslik": "Sabbatical (Uzun Süreli Ayrılık)",
+        "icerik": "Şirkette kesintisiz 7 yıl çalışan personel, kariyer molası (Sabbatical) hakkı kazanır. Bu kapsamda 3 ay boyunca maaşının %50'sini alarak ücretli izin yapabilir."
+    },
+    {
+        "baslik": "Yurt İçi Harcırah",
+        "icerik": "Şehir dışı görevlendirmelerde konaklama ve ulaşım şirkete aittir. Ek olarak çalışana günlük 1.000 TL net cep harçlığı (harcırah) verilir."
+    },
+    {
+        "baslik": "Yurt Dışı Harcırah (Döviz)",
+        "icerik": "Yurt dışı görevlerde günlük harcırah bölgeye göre değişir. Avrupa Birliği ülkeleri: Günlük 130 Euro. Amerika ve Kanada: Günlük 160 USD. Orta Doğu ve Asya: Günlük 110 USD."
+    },
+    {
+        "baslik": "Temsil ve Ağırlama Bütçesi",
+        "icerik": "Müşteri yemeklerinde kişi başı harcama limiti 2.000 TL'dir. Alkol harcamaları şirket tarafından karşılanmaz. Ekip yemeklerinde kişi başı limit 1.200 TL'dir."
+    },
+    {
+        "baslik": "Kendi Aracını Kullanma",
+        "icerik": "Şirket işi için şahsi aracını kullanan personele km başına 12 TL yakıt desteği ödenir. Aylık maksimum 2.000 km ödeme yapılabilir."
+    },
+    {
+        "baslik": "Referans Bonusu Sistemi",
+        "icerik": "Mevcut çalışanların önerdiği aday işe alınırsa bonus ödenir. Junior Pozisyon: 7.000 TL. Specialist/Mid Pozisyon: 15.000 TL. Senior/Lead Pozisyon: 25.000 TL. Yönetici/Manager: 40.000 TL. Ödeme, aday deneme süresini geçince yapılır."
+    },
+    {
+        "baslik": "Taşınma (Relocation) Desteği",
+        "icerik": "Şirket talebiyle başka bir şehre taşınan personele 1 maaş tutarında taşınma ikramiyesi ve nakliye masrafları (maksimum 30.000 TL) ödenir."
+    },
+    {
+        "baslik": "Eğitim Bütçesi ve Geri Ödeme",
+        "icerik": "Her çalışanın yıllık 25.000 TL kişisel eğitim bütçesi vardır. Ancak, şirket tarafından karşılanan eğitimden sonra 6 ay içinde istifa eden çalışan, eğitim ücretinin tamamını (%100) geri öder."
+    },
+    {
+        "baslik": "Cihaz Politikası ve BYOD",
+        "icerik": "Çalışanlara MacBook Pro veya Dell XPS verilir. Kendi bilgisayarını kullanmak isteyen (BYOD) personele aylık 2.000 TL donanım kullanım bedeli ödenir."
+    },
+    {
+        "baslik": "Hediye Kabul Politikası",
+        "icerik": "Çalışanlar, tedarikçi veya müşterilerden piyasa değeri 50 USD (veya karşılığı TL) üzerindeki hediyeleri kabul edemez. Bu tutarın altındaki hediyeler İK'ya bildirilmelidir."
+    },
+    {
+        "baslik": "Ek İş ve Çıkar Çatışması",
+        "icerik": "Tam zamanlı çalışanların şirketten onay almadan başka bir işte (Freelance dahil) çalışması yasaktır. Rakip firmalarla iş yapmak kesinlikle yasaktır ve işten çıkarma sebebidir."
+    },
+    {
+        "baslik": "Kıyafet ve Ofis Düzeni",
+        "icerik": "Pazartesi-Perşembe arası 'Smart Casual' giyim zorunludur. Cuma günleri serbest kıyafettir ancak şort, terlik ve siyasi içerikli tişört yasaktır."
+    },
+    {
+        "baslik": "Temiz Masa İlkesi",
+        "icerik": "Mesai bitiminde masalarda gizli veya şirket içi (Internal) ibareli hiçbir döküman bırakılmamalıdır. İhlal durumunda ilk seferde uyarı, tekrarında disiplin cezası uygulanır."
+    },
+    {
+        "baslik": "İhbar Süreleri",
+        "icerik": "İstifa veya işten çıkarma durumunda ihbar süreleri şöyledir: 6 aya kadar çalışma için 2 hafta, 6 ay-1.5 yıl arası için 4 hafta, 1.5-3 yıl arası için 6 hafta, 3 yıldan fazla çalışma için 8 hafta."
+    }
+]
