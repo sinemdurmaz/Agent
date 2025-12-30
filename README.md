@@ -1,130 +1,102 @@
-# 🤖 Kurumsal İK (HR) ReAct Ajanı
+#  İş Hukuku Danışmanı ReAct Ajanı
 
-> **“Sadece cevap vermez; düşünür, planlar ve hesaplar.”**
+> **“Kanunları sadece okumaz; yorumlar, hesaplar ve danışmanlık verir.”**
 
-Bu proje, **NLP (Doğal Dil İşleme)** dersi bitirme projesi kapsamında geliştirilmiş,  
-**ReAct (Reasoning + Acting)** mimarisine sahip otonom bir **İnsan Kaynakları (HR) Asistanı**dır.
+Bu proje, **4857 Sayılı İş Kanunu** kapsamında çalışanların ve işverenlerin hukuki sorularını yanıtlamak üzere geliştirilmiş, **ReAct (Reasoning + Acting)** mimarisine sahip otonom bir yapay zeka asistanıdır.
 
-Klasik RAG sistemlerinden farklı olarak bu ajan:
-- Soruları **alt problemlere böler**
-- **Matematiksel muhakeme** yapar
-- **İstisnai durumları (Edge Cases)** yakalayabilir
-- LLM’i yalnızca metin üretici değil, **karar verici (Orchestrator)** olarak kullanır
+Klasik arama motorlarından farklı olarak bu ajan; kanun maddelerini **yorumlayarak** bağlama oturtur, kıdem tazminatı veya fazla mesai gibi konularda **matematiksel hesaplamalar** yapar ve hukuki **istisnaları** (deneme süresi, haklı fesih vb.) dikkate alır.
 
 ---
 
-## 🚀 Proje Özellikleri
+##  Proje Özellikleri
 
-### 🧠 ReAct Mimarisi
-Ajan, problemleri şu döngüyle çözer:
+###  ReAct Mimarisi (Düşün-Hareket Et)
+Ajan, karmaşık hukuki problemleri şu döngüyle çözer:
+`Thought` (Düşünce) → `Action` (Eylem) → `Observation` (Gözlem) → `Final Answer` (Cevap)
 
-**Thought → Action → Observation → Final Answer**
+Bu yapı sayesinde ajan; bir soruyu cevaplamak için önce kanuna bakması gerektiğini, ardından bulduğu oranı kullanarak hesaplama yapması gerektiğini **kendi planlar**.
 
-Bu yapı sayesinde:
-- Ne zaman **araç kullanacağına**
-- Ne zaman **bilgi arayacağına**
-- Ne zaman **hesaplama yapacağına**
-
-kendisi karar verir.
-
----
-
-### 🛠️ Tool Use (Araç Kullanımı)
-
-Ajan, dış dünyayla etkileşime geçebilen araçlara sahiptir:
+###  Araçlar (Tools)
+Ajan, hukuki süreçleri yönetmek için iki temel araca sahiptir:
 
 | Araç | Açıklama |
-|----|----|
-| `hr_policy_search` | Vektör tabanlı şirket politikası araması |
-| `calculator` | Maaş, prim, harcırah vb. hesaplamalar |
+| :--- | :--- |
+| **`kanun_ara`** | 4857 Sayılı İş Kanunu PDF'i üzerinde vektör tabanlı semantik arama yapar ve ilgili maddeyi getirir. |
+| **`calculator`** | Kıdem tazminatı, ihbar süresi, fazla mesai ücreti gibi hukuki matematik işlemlerini yapar. |
+
+###  Agentic RAG
+* Statik metin getirme yerine,
+* Kanun maddesini (Örn: Madde 41 - Fazla Çalışma) analiz eder,
+* Kullanıcının özel durumuna (Örn: "Maaşım 20.000 TL") göre yanıtı özelleştirir.
+
+###  Hukuki Matematik
+Metin içinde geçen *"yüzde elli artırımlı ödenir"* veya *"her yıl için 30 günlük ücret"* gibi sözel ifadeleri sayısal verilere dönüştürerek hesaplar.
 
 ---
 
-### 📚 Agentic RAG
-- Statik metin getirme yerine
-- Politika metnini **yorumlayarak**
-- Bağlama uygun şekilde yanıt üretir
+##  Bilgi Tabanı (Knowledge Base)
+
+Proje, Türkiye Cumhuriyeti'nin temel çalışma yasası olan **4857 Sayılı İş Kanunu**'nun tam metnini kullanır.
+
+* **Kaynak:** `document.pdf` (İş Kanunu Tam Metni)
+* **İşleme:** PDF verisi, `SimpleRAG` motoru ile "MADDE" bazlı parçalara (chunk) ayrılarak vektör veritabanına işlenmiştir.
 
 ---
 
-### 🧮 Matematiksel Muhakeme
-- Maaş
-- Prim
-- Harcırah
-- Katsayı bazlı hesaplamalar
+##  Çalışma Mantığı
 
-Metin içinden sayısal veriler ayıklanır ve **hesaplanır**.
 
----
 
-### 🛡️ Edge Case Yönetimi
-Ajan şu durumları algılar:
-- Eksik bilgi
-- Yetkisiz talepler
-- Etik ihlaller
-- Deneme süresi / koşullu kısıtlar
-
----
-
-## 📂 Veri Seti (Knowledge Base)
-
-Projede, gerçekçi bir kurumsal simülasyon için  
-**50+ maddeden oluşan**, JSON formatında yapılandırılmış özel bir veri seti kullanılmıştır.
-
-**Dosya:** `sirket_politikalari.json`
-
-### Veri Seti Kapsamı
-
-- 💰 Maaş, Prim ve ESOP politikaları  
-- ✈️ Çoklu para birimli harcırahlar (USD, EUR, TL)  
-- 🏠 Hibrit & uzaktan çalışma kuralları  
-- 🎁 Etik ve hediye kabul limitleri  
-- ⚖️ İzinler ve kıdem hakları  
-
----
-
-## 🛠️ Kurulum ve Çalıştırma
-
-### 1️⃣ Repoyu Klonlayın
-```bash
-git clone https://github.com/KULLANICI_ADINIZ/HR-ReAct-Agent.git
-cd HR-ReAct-Agent
-
-2️⃣ Gerekli Kütüphaneleri Yükleyin
-bash
-pip install -r requirements.txt
-
-3️⃣ API Anahtarını Tanımlayın
-Bu proje Groq API üzerinden Llama-3-70B modelini kullanır.
-
-Seçenek 1: main.py içinde
-python
-api_key = "gsk_..."
-
-Seçenek 2: Ortam değişkeni (önerilir)
-bash
-export GROQ_API_KEY="gsk_..."
-
-4️⃣ Ajanı Başlatın
-python main.py
-
-🧪 Test Senaryoları (Benchmarks)
-Senaryo Tipi	Kullanıcı Sorusu	Ajanın Muhakeme Süreci
-Karmaşık Matematik	“Yıllık 600k maaşım ve 5 notum var, primim ne kadar?”	Maaş/12 → Katsayı (2.5) → Hesaplama → 125.000 TL
-Çoklu Para Birimi	“3 gün Paris, 2 gün Tokyo harcırahım nedir?”	3×130 EUR + 2×110 USD → 390 EUR + 220 USD
-Koşullu İstisna	“İşe dün başladım, evden çalışabilir miyim?”	Deneme süresi kontrolü → Hayır
-Etik Kontrolü	“Tedarikçiden 100$ hediye geldi, alabilir miyim?”	Limit (50$) < 100$ → Yasak
-
-🏗️ Mimari Şeması
+```mermaid
 graph TD
-    User[Kullanıcı Sorusu] --> Agent[Llama-3 ReAct Ajanı]
-    Agent --> Thought[Düşünce]
+    User[Kullanıcı: 'Fazla mesai ücretim ne kadar?'] --> Agent[Llama-3 Hukuk Ajanı]
+    Agent --> Thought[Düşünce: Oranı kanundan bulmalıyım]
     Thought --> Router{Araç Seçimi}
 
-    Router -->|Politika| RAG[Vektör Veritabanı]
-    Router -->|Hesaplama| Calc[Hesap Makinesi]
+    Router -->|Ara| Tool1[kanun_ara: 'Fazla çalışma ücreti oranı']
+    Tool1 --> Obs1[Gözlem: 'Saatlik ücret %50 artırılır']
+    
+    Obs1 --> Agent
+    Agent --> Thought2[Düşünce: Şimdi hesaplamalıyım]
+    Thought2 --> Router
+    
+    Router -->|Hesapla| Tool2[calculator: 'Saatlik Ücret * 1.5']
+    Tool2 --> Obs2[Gözlem: Sonuç]
 
-    RAG --> Agent
-    Calc --> Agent
+    Obs2 --> Agent
+    Agent --> Final[Cevap: 'Saatlik fazla mesai ücretiniz X TL'dir.']
 
-    Agent --> Final[Nihai Cevap]
+ Kurulum ve Çalıştırma
+1️⃣ Gereksinimler
+Python 3.8+
+
+Groq API Anahtarı (Llama-3 Modeli için)
+
+document.pdf (İş Kanunu dosyası proje dizininde olmalıdır)
+
+2️⃣ Kurulum
+Bash
+
+git clone [https://github.com/KULLANICI_ADINIZ/Is-Hukuku-Ajan.git](https://github.com/KULLANICI_ADINIZ/Is-Hukuku-Ajan.git)
+cd Is-Hukuku-Ajan
+pip install -r requirements.txt
+3️⃣ API Anahtarı
+Projenin çalışması için Groq API anahtarınızı tanımlayın:
+
+Bash
+
+export GROQ_API_KEY="gsk_..."
+4️⃣ Çalıştırma
+Bash
+
+python ik_agen.py
+
+ Benchmark ve Test Senaryoları
+Ajanın hukuki yetkinliğini ölçmek için kullanılan 3 temel kategori ve örnekler:
+Kategori,Soru Örneği,Ajanın Çözüm Yolu
+Temel Hukuk Bilgisi,"""Haftalık çalışma süresi yasal olarak en çok kaç saattir?""",kanun_ara → Madde 63'ü bul → 45 Saat
+Matematiksel Hesap,"""Brüt 20.000 TL maaşla 10 saat fazla mesai yaptım, ücreti ne kadar?""",kanun_ara (%50 oran) → calculator (20000/225 * 1.5 * 10) → ~1.333 TL
+Mantıksal Çıkarım,"""Kendi isteğimle istifa edersem kıdem tazminatı alabilir miyim?""",kanun_ara (Kıdem şartları) → İstifa durumunu analiz et → Hayır (Haklı neden yoksa)
+
+ Lisans
+Bu proje eğitim amaçlı geliştirilmiştir ve hukuki tavsiye niteliği taşımaz. Nihai kararlar için bir hukukçuya danışılmalıdır. MIT License altında lisanslanmıştır.
