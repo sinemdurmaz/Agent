@@ -63,7 +63,8 @@ Proje, Türkiye Cumhuriyeti'nin temel çalışma yasası olan **4857 Sayılı İ
     Obs2 --> Agent
     Agent --> Final[Cevap: 'Saatlik fazla mesai ücretiniz X TL'dir.']
 ```
- Kurulum ve Çalıştırma
+## Kurulum ve Çalıştırma
+ 
 1️⃣ Gereksinimler
 Python 3.8+
 
