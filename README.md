@@ -91,22 +91,17 @@ git clone https://github.com/KULLANICI_ADINIZ/HR-ReAct-Agent.git
 cd HR-ReAct-Agent
 2️⃣ Gerekli Kütüphaneleri Yükleyin
 bash
-Kodu kopyala
 pip install -r requirements.txt
 3️⃣ API Anahtarını Tanımlayın
 Bu proje Groq API üzerinden Llama-3-70B modelini kullanır.
 
 Seçenek 1: main.py içinde
 python
-Kodu kopyala
 api_key = "gsk_..."
 Seçenek 2: Ortam değişkeni (önerilir)
 bash
-Kodu kopyala
 export GROQ_API_KEY="gsk_..."
 4️⃣ Ajanı Başlatın
-bash
-Kodu kopyala
 python main.py
 🧪 Test Senaryoları (Benchmarks)
 Senaryo Tipi	Kullanıcı Sorusu	Ajanın Muhakeme Süreci
@@ -116,8 +111,6 @@ Koşullu İstisna	“İşe dün başladım, evden çalışabilir miyim?”	Denem
 Etik Kontrolü	“Tedarikçiden 100$ hediye geldi, alabilir miyim?”	Limit (50$) < 100$ → Yasak
 
 🏗️ Mimari Şeması
-mermaid
-Kodu kopyala
 graph TD
     User[Kullanıcı Sorusu] --> Agent[Llama-3 ReAct Ajanı]
     Agent --> Thought[Düşünce]
