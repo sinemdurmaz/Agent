@@ -1,1 +1,17 @@
-# Agent
+ Kurumsal İK (HR) ReAct Ajanı"Sadece cevap vermez; düşünür, planlar ve hesaplar."Bu proje, Doğal Dil İşleme (NLP) dersi bitirme projesi kapsamında geliştirilmiş, ReAct (Reasoning + Acting) mimarisine sahip otonom bir İnsan Kaynakları asistanıdır1111. Klasik RAG sistemlerinin aksine, bu ajan karmaşık soruları alt parçalara bölebilir, matematiksel hesaplamalar yapabilir ve istisnai durumları (Edge Cases) yönetebilir2222.🚀 Proje ÖzellikleriBu sistem, LLM'i (Llama-3-70b) sadece bir metin üretici olarak değil, bir karar mekanizması (Orchestrator) olarak kullanır3.🧠 ReAct Mimarisi: Ajan, Thought (Düşünce) → Action (Eylem) → Observation (Gözlem) döngüsünü kullanarak problemleri adım adım çözer4444.🛠️ Tool Use (Araç Kullanımı): Ajanın dış dünyaya erişimi vardır. Gerektiğinde calculator (Hesap Makinesi) veya hr_policy_search (Vektör Tabanlı Arama) araçlarını kullanır5555.📚 Agentic RAG: Statik metin getirme yerine, veriyi analiz ederek sunar6.🧮 Matematiksel Muhakeme: Maaş, prim, harcırah gibi finansal verileri metinden ayıklar ve işlem yapar7.🛡️ Uç Değer (Edge Case) Yönetimi: Eksik bilgi, yetkisiz işlem (etik kurallar) veya koşullu durumları (örn: deneme süresi kısıtlamaları) algılar.📂 Veri Seti (Knowledge Base)Projede, gerçekçi bir kurumsal simülasyon sağlamak amacıyla 50+ maddeden oluşan, JSON formatında yapılandırılmış özel bir veri seti (sirket_politikalari.json) kullanılmıştır8.Veri Seti Kapsamı:💰 Maaş, Prim ve Hisse Opsiyonları (ESOP)✈️ Çoklu Para Birimli Seyahat Harcırahları (USD, EUR, TL)🏠 Hibrit ve Uzaktan Çalışma Kuralları🎁 Etik Kurallar ve Hediye Kabul Limitleri⚖️ Yasal İzinler ve Kıdem Hakları🛠️ Kurulum ve ÇalıştırmaProjeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:1. Repoyu KlonlayınBashgit clone https://github.com/KULLANICI_ADINIZ/HR-ReAct-Agent.git
+cd HR-ReAct-Agent
+2. Gerekli Kütüphaneleri YükleyinBashpip install -r requirements.txt
+3. API Anahtarını TanımlayınBu proje Groq API üzerinden Llama-3 modelini kullanır. main.py içerisine API anahtarınızı ekleyin veya ortam değişkeni olarak atayın:Python# main.py içinde:
+api_key = "gsk_..." # Kendi Groq API Key'iniz
+4. Ajanı BaşlatınBashpython main.py
+🧪 Test Senaryoları (Benchmarks)Ajanın muhakeme yeteneği aşağıdaki zorlu senaryolarla test edilmiştir9999:Senaryo TipiKullanıcı SorusuAjanın Çözüm Yolu (Reasoning)Karmaşık Matematik"Yıllık 600k maaşım ve 5 notum var, primim ne kadar?"1. Politikadan formülü bulur: (Maaş/12) * Katsayı2. 5 notunun katsayısını (2.5) çeker.3. calculator aracıyla hesaplar: 125.000 TLÇoklu Para Birimi"3 gün Paris, 2 gün Tokyo harcırahım nedir?"1. Avrupa (130 EUR) ve Asya (110 USD) günlük limitlerini bulur.2. Gün sayılarıyla çarpar.3. Para birimlerini karıştırmadan toplar: 390 EUR + 220 USDKoşullu İstisna"İşe dün başladım, evden çalışabilir miyim?"1. Genel kuralı (3 gün izin) bulur.2. İstisnayı yakalar: "Deneme süresinde (ilk 2 ay) yasak."3. Cevap: Hayır.Etik Kontrolü*"Tedarikçiden 100$ hediye geldi, alabilir miyim?"*1. Şirket limitini (50$) bulur.2. 100$ > 50$ karşılaştırmasını yapar.3. Cevap: Yasak.🏗️ Mimari ŞemasıKod snippet'igraph TD
+    User[Kullanıcı Sorusu] --> Agent[Llama-3 ReAct Ajanı]
+    Agent -- Düşünce (Thought) --> Router{Araç Seçimi}
+    
+    Router -- Politika Sorusu --> RAG[Vektör Veritabanı]
+    Router -- Hesaplama --> Calc[Hesap Makinesi]
+    
+    RAG -- Ham Metin --> Agent
+    Calc -- Sayısal Sonuç --> Agent
+    
+    Agent -- Muhakeme (Reasoning) --> Final[Nihai Cevap]
