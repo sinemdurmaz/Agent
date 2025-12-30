@@ -1,99 +1,153 @@
-#  İş Hukuku Danışmanı ReAct Ajanı
+# ⚖️ Genel Hukuk Danışmanı ReAct Ajanı
 
-> **“Kanunları sadece okumaz; yorumlar, hesaplar ve danışmanlık verir.”**
+> **“Kanunları sadece okumaz; yorumlar, hesaplar ve hukuki danışmanlık verir.”**
 
-Bu proje, **4857 Sayılı İş Kanunu** kapsamında çalışanların ve işverenlerin hukuki sorularını yanıtlamak üzere geliştirilmiş, **ReAct (Reasoning + Acting)** mimarisine sahip otonom bir yapay zeka asistanıdır.
+Bu proje, Türk hukuk sistemine ilişkin soruları yanıtlamak üzere geliştirilmiş,  
+**ReAct (Reasoning + Acting)** mimarisine sahip otonom bir **Genel Hukuk Yapay Zeka Asistanı**dır.
 
-Klasik arama motorlarından farklı olarak bu ajan; kanun maddelerini **yorumlayarak** bağlama oturtur, kıdem tazminatı veya fazla mesai gibi konularda **matematiksel hesaplamalar** yapar ve hukuki **istisnaları** (deneme süresi, haklı fesih vb.) dikkate alır.
+Klasik arama motorları veya basit RAG sistemlerinden farklı olarak bu ajan:
+- Kanun ve içtihat niteliğindeki metinleri **bağlam içinde yorumlar**
+- Hukuki oran ve süreleri **matematiksel hesaplamaya döker**
+- İstisnai durumları (şartlar, süreler, hak düşürücü süreler vb.) dikkate alır
+- LLM’i yalnızca cevap üretici değil, **hukuki muhakeme yapan bir karar verici** olarak kullanır
 
 ---
 
-##  Proje Özellikleri
+## 🚀 Proje Özellikleri
 
-###  ReAct Mimarisi (Düşün-Hareket Et)
-Ajan, karmaşık hukuki problemleri şu döngüyle çözer:
-`Thought` (Düşünce) → `Action` (Eylem) → `Observation` (Gözlem) → `Final Answer` (Cevap)
+### 🧠 ReAct Mimarisi (Reasoning + Acting)
+Ajan, karmaşık hukuki problemleri aşağıdaki döngüyle çözer:
 
-Bu yapı sayesinde ajan; bir soruyu cevaplamak için önce kanuna bakması gerektiğini, ardından bulduğu oranı kullanarak hesaplama yapması gerektiğini **kendi planlar**.
+**Thought (Düşünce) → Action (Eylem) → Observation (Gözlem) → Final Answer (Cevap)**
 
-###  Araçlar (Tools)
-Ajan, hukuki süreçleri yönetmek için iki temel araca sahiptir:
+Bu sayede ajan:
+- Önce **hangi hukuki bilgiye ihtiyaç duyduğunu**
+- Ardından **arama mı yoksa hesaplama mı yapacağını**
+- Son olarak **sonucu nasıl yorumlayacağını**
+
+kendi kendine planlar.
+
+---
+
+### 🛠️ Araçlar (Tools)
+
+Ajan, hukuki muhakemeyi desteklemek için iki temel araca sahiptir:
 
 | Araç | Açıklama |
-| :--- | :--- |
-| **`kanun_ara`** | 4857 Sayılı İş Kanunu PDF'i üzerinde vektör tabanlı semantik arama yapar ve ilgili maddeyi getirir. |
-| **`calculator`** | Kıdem tazminatı, ihbar süresi, fazla mesai ücreti gibi hukuki matematik işlemlerini yapar. |
-
-###  Agentic RAG
-* Statik metin getirme yerine,
-* Kanun maddesini (Örn: Madde 41 - Fazla Çalışma) analiz eder,
-* Kullanıcının özel durumuna (Örn: "Maaşım 20.000 TL") göre yanıtı özelleştirir.
-
-###  Hukuki Matematik
-Metin içinde geçen *"yüzde elli artırımlı ödenir"* veya *"her yıl için 30 günlük ücret"* gibi sözel ifadeleri sayısal verilere dönüştürerek hesaplar.
+|----|----|
+| `kanun_ara` | Hukuk verisetleri üzerinde **vektör tabanlı semantik arama** yaparak ilgili hukuki bilgiyi getirir |
+| `calculator` | Kıdem tazminatı, fazla mesai, faiz, oran ve süre bazlı **hukuki matematik** işlemlerini yapar |
 
 ---
 
-##  Bilgi Tabanı (Knowledge Base)
+### 📚 Agentic RAG Yaklaşımı
+Statik metin getirme yerine ajan:
 
-Proje, Türkiye Cumhuriyeti'nin temel çalışma yasası olan **4857 Sayılı İş Kanunu**'nun tam metnini kullanır.
+- Hukuki metni **analiz eder**
+- Kullanıcının sorusundaki bağlama göre **yorumlar**
+- Gerekirse hesaplama yaparak **kişiselleştirilmiş yanıt** üretir
 
-* **Kaynak:** `document.pdf` (İş Kanunu Tam Metni)
-* **İşleme:** PDF verisi, `SimpleRAG` motoru ile "MADDE" bazlı parçalara (chunk) ayrılarak vektör veritabanına işlenmiştir.
+Örnek:
+> “Saatlik ücretim 200 TL ise fazla mesai ne kadar?”  
+→ Kanuni oran bulunur (%50)  
+→ Hesaplanır  
+→ Açıklamalı sonuç sunulur
 
 ---
 
-##  Çalışma Mantığı
+### 🧮 Hukuki Matematik
+Ajan, kanun metinlerinde geçen şu ifadeleri sayısal hale getirir:
+- “%50 artırımlı”
+- “Her yıl için 30 günlük ücret”
+- “Yıllık %9 yasal faiz”
+- “X ay / Y yıl içinde”
 
-```
-    User[Kullanıcı: 'Fazla mesai ücretim ne kadar?'] --> Agent[Llama-3 Hukuk Ajanı]
-    Agent --> Thought[Düşünce: Oranı kanundan bulmalıyım]
+ve bunları **calculator** aracıyla hesaplar.
+
+---
+
+## 📂 Bilgi Tabanı (Knowledge Base)
+
+Bu proje, genel hukuk alanını kapsayan geniş bir veri kümesi kullanır.
+
+### 📌 Kullanılan Veri
+- **HukukV4 Dataset (HuggingFace)**
+- Anayasa Hukuku
+- Medeni Hukuk
+- Ceza Hukuku
+- Borçlar Hukuku
+- İş Hukuku
+- Miras Hukuku
+
+### 📌 İşleme Süreci
+- Metinler **semantic embedding** ile vektörleştirilir
+- Benzerlik eşiği kullanılarak en alakalı içerik getirilir
+- Ajan yalnızca bulduğu bilgiye dayanarak cevap üretir
+
+---
+
+## 🏗️ Çalışma Mantığı (Akış)
+
+```mermaid
+graph TD
+    User[Kullanıcı Sorusu] --> Agent[Genel Hukuk ReAct Ajanı]
+    Agent --> Thought[Düşünce: Hangi bilgiye ihtiyacım var?]
     Thought --> Router{Araç Seçimi}
 
-    Router -->|Ara| Tool1[kanun_ara: 'Fazla çalışma ücreti oranı']
-    Tool1 --> Obs1[Gözlem: 'Saatlik ücret %50 artırılır']
-    
-    Obs1 --> Agent
-    Agent --> Thought2[Düşünce: Şimdi hesaplamalıyım]
-    Thought2 --> Router
-    
-    Router -->|Hesapla| Tool2[calculator: 'Saatlik Ücret * 1.5']
-    Tool2 --> Obs2[Gözlem: Sonuç]
+    Router -->|Ara| Search[kanun_ara]
+    Router -->|Hesapla| Calc[calculator]
 
+    Search --> Obs1[Gözlem: Hukuki metin]
+    Calc --> Obs2[Gözlem: Sayısal sonuç]
+
+    Obs1 --> Agent
     Obs2 --> Agent
-    Agent --> Final[Cevap: 'Saatlik fazla mesai ücretiniz X TL'dir.']
-```
-## Kurulum ve Çalıştırma
- 
+
+    Agent --> Final[Nihai Hukuki Cevap]
+
+
+🛠️ Kurulum ve Çalıştırma
 1️⃣ Gereksinimler
+
 Python 3.8+
 
-Groq API Anahtarı (Llama-3 Modeli için)
+Groq API Anahtarı
 
-document.pdf (İş Kanunu dosyası proje dizininde olmalıdır)
+İnternet bağlantısı (dataset indirimi için)
 
 2️⃣ Kurulum
-
-Bash
-
-git clone [https://github.com/sinemdurmaz/Agent.git](https://github.com/sinemdurmaz/Agent.git)
-
+git clone https://github.com/sinemdurmaz/Agent.git
 cd Agent
-
 pip install -r requirements.txt
 
-3️⃣ API Anahtarı
-Projenin çalışması için Groq API anahtarınızı tanımlayın:
-
-Bash
-
+3️⃣ API Anahtarı Tanımlama
 export GROQ_API_KEY="gsk_..."
 
 4️⃣ Çalıştırma
+python genel_hukuk.py
 
-Bash
+🧪 Benchmark & Testler
 
-python is_hukuku.py
+Ajan; Anayasa, Medeni, Ceza, Borçlar, İş ve Miras Hukuku alanlarından
+oluşturulmuş çok kategorili benchmark soruları ile test edilmiştir.
 
- Lisans
-Bu proje eğitim amaçlı geliştirilmiştir ve hukuki tavsiye niteliği taşımaz. Nihai kararlar için bir hukukçuya danışılmalıdır. MIT License altında lisanslanmıştır.
+Testler şunları ölçer:
+
+Doğru hukuki kaynağa erişim
+
+Mantıksal muhakeme
+
+Matematiksel doğruluk
+
+Senaryo bazlı yorumlama
+
+⚠️ Hukuki Uyarı
+
+Bu proje eğitim ve araştırma amaçlıdır.
+Üretilen cevaplar hukuki danışmanlık niteliği taşımaz.
+Nihai kararlar için mutlaka bir hukukçuya danışılmalıdır.
+
+
+
+
+
