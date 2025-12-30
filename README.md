@@ -77,12 +77,14 @@ Bash
 git clone [https://github.com/sinemdurmaz/Agent.git](https://github.com/sinemdurmaz/Agent.git)
 cd Agent
 pip install -r requirements.txt
+
 3️⃣ API Anahtarı
 Projenin çalışması için Groq API anahtarınızı tanımlayın:
 
 Bash
 
 export GROQ_API_KEY="gsk_..."
+
 4️⃣ Çalıştırma
 Bash
 
