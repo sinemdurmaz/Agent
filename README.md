@@ -77,7 +77,9 @@ document.pdf (İş Kanunu dosyası proje dizininde olmalıdır)
 Bash
 
 git clone [https://github.com/sinemdurmaz/Agent.git](https://github.com/sinemdurmaz/Agent.git)
+
 cd Agent
+
 pip install -r requirements.txt
 
 3️⃣ API Anahtarı
