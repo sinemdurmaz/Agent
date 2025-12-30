@@ -91,10 +91,5 @@ Bash
 
 python ik_agen.py
 
- Benchmark ve Test Senaryoları
-Ajanın hukuki yetkinliğini ölçmek için kullanılan 3 temel kategori ve örnekler:
-
-<img width="899" height="359" alt="image" src="https://github.com/user-attachments/assets/b823f242-7a99-4503-b915-7f4799e2d8b4" />
-
  Lisans
 Bu proje eğitim amaçlı geliştirilmiştir ve hukuki tavsiye niteliği taşımaz. Nihai kararlar için bir hukukçuya danışılmalıdır. MIT License altında lisanslanmıştır.
