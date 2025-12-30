@@ -1,17 +1,132 @@
- Kurumsal İK (HR) ReAct Ajanı"Sadece cevap vermez; düşünür, planlar ve hesaplar."Bu proje, Doğal Dil İşleme (NLP) dersi bitirme projesi kapsamında geliştirilmiş, ReAct (Reasoning + Acting) mimarisine sahip otonom bir İnsan Kaynakları asistanıdır1111. Klasik RAG sistemlerinin aksine, bu ajan karmaşık soruları alt parçalara bölebilir, matematiksel hesaplamalar yapabilir ve istisnai durumları (Edge Cases) yönetebilir2222.🚀 Proje ÖzellikleriBu sistem, LLM'i (Llama-3-70b) sadece bir metin üretici olarak değil, bir karar mekanizması (Orchestrator) olarak kullanır3.🧠 ReAct Mimarisi: Ajan, Thought (Düşünce) → Action (Eylem) → Observation (Gözlem) döngüsünü kullanarak problemleri adım adım çözer4444.🛠️ Tool Use (Araç Kullanımı): Ajanın dış dünyaya erişimi vardır. Gerektiğinde calculator (Hesap Makinesi) veya hr_policy_search (Vektör Tabanlı Arama) araçlarını kullanır5555.📚 Agentic RAG: Statik metin getirme yerine, veriyi analiz ederek sunar6.🧮 Matematiksel Muhakeme: Maaş, prim, harcırah gibi finansal verileri metinden ayıklar ve işlem yapar7.🛡️ Uç Değer (Edge Case) Yönetimi: Eksik bilgi, yetkisiz işlem (etik kurallar) veya koşullu durumları (örn: deneme süresi kısıtlamaları) algılar.📂 Veri Seti (Knowledge Base)Projede, gerçekçi bir kurumsal simülasyon sağlamak amacıyla 50+ maddeden oluşan, JSON formatında yapılandırılmış özel bir veri seti (sirket_politikalari.json) kullanılmıştır8.Veri Seti Kapsamı:💰 Maaş, Prim ve Hisse Opsiyonları (ESOP)✈️ Çoklu Para Birimli Seyahat Harcırahları (USD, EUR, TL)🏠 Hibrit ve Uzaktan Çalışma Kuralları🎁 Etik Kurallar ve Hediye Kabul Limitleri⚖️ Yasal İzinler ve Kıdem Hakları🛠️ Kurulum ve ÇalıştırmaProjeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:1. Repoyu KlonlayınBashgit clone https://github.com/KULLANICI_ADINIZ/HR-ReAct-Agent.git
+# 🤖 Kurumsal İK (HR) ReAct Ajanı
+
+> **“Sadece cevap vermez; düşünür, planlar ve hesaplar.”**
+
+Bu proje, **NLP (Doğal Dil İşleme)** dersi bitirme projesi kapsamında geliştirilmiş,  
+**ReAct (Reasoning + Acting)** mimarisine sahip otonom bir **İnsan Kaynakları (HR) Asistanı**dır.
+
+Klasik RAG sistemlerinden farklı olarak bu ajan:
+- Soruları **alt problemlere böler**
+- **Matematiksel muhakeme** yapar
+- **İstisnai durumları (Edge Cases)** yakalayabilir
+- LLM’i yalnızca metin üretici değil, **karar verici (Orchestrator)** olarak kullanır
+
+---
+
+## 🚀 Proje Özellikleri
+
+### 🧠 ReAct Mimarisi
+Ajan, problemleri şu döngüyle çözer:
+
+**Thought → Action → Observation → Final Answer**
+
+Bu yapı sayesinde:
+- Ne zaman **araç kullanacağına**
+- Ne zaman **bilgi arayacağına**
+- Ne zaman **hesaplama yapacağına**
+
+kendisi karar verir.
+
+---
+
+### 🛠️ Tool Use (Araç Kullanımı)
+
+Ajan, dış dünyayla etkileşime geçebilen araçlara sahiptir:
+
+| Araç | Açıklama |
+|----|----|
+| `hr_policy_search` | Vektör tabanlı şirket politikası araması |
+| `calculator` | Maaş, prim, harcırah vb. hesaplamalar |
+
+---
+
+### 📚 Agentic RAG
+- Statik metin getirme yerine
+- Politika metnini **yorumlayarak**
+- Bağlama uygun şekilde yanıt üretir
+
+---
+
+### 🧮 Matematiksel Muhakeme
+- Maaş
+- Prim
+- Harcırah
+- Katsayı bazlı hesaplamalar
+
+Metin içinden sayısal veriler ayıklanır ve **hesaplanır**.
+
+---
+
+### 🛡️ Edge Case Yönetimi
+Ajan şu durumları algılar:
+- Eksik bilgi
+- Yetkisiz talepler
+- Etik ihlaller
+- Deneme süresi / koşullu kısıtlar
+
+---
+
+## 📂 Veri Seti (Knowledge Base)
+
+Projede, gerçekçi bir kurumsal simülasyon için  
+**50+ maddeden oluşan**, JSON formatında yapılandırılmış özel bir veri seti kullanılmıştır.
+
+**Dosya:** `sirket_politikalari.json`
+
+### Veri Seti Kapsamı
+
+- 💰 Maaş, Prim ve ESOP politikaları  
+- ✈️ Çoklu para birimli harcırahlar (USD, EUR, TL)  
+- 🏠 Hibrit & uzaktan çalışma kuralları  
+- 🎁 Etik ve hediye kabul limitleri  
+- ⚖️ İzinler ve kıdem hakları  
+
+---
+
+## 🛠️ Kurulum ve Çalıştırma
+
+### 1️⃣ Repoyu Klonlayın
+```bash
+git clone https://github.com/KULLANICI_ADINIZ/HR-ReAct-Agent.git
 cd HR-ReAct-Agent
-2. Gerekli Kütüphaneleri YükleyinBashpip install -r requirements.txt
-3. API Anahtarını TanımlayınBu proje Groq API üzerinden Llama-3 modelini kullanır. main.py içerisine API anahtarınızı ekleyin veya ortam değişkeni olarak atayın:Python# main.py içinde:
-api_key = "gsk_..." # Kendi Groq API Key'iniz
-4. Ajanı BaşlatınBashpython main.py
-🧪 Test Senaryoları (Benchmarks)Ajanın muhakeme yeteneği aşağıdaki zorlu senaryolarla test edilmiştir9999:Senaryo TipiKullanıcı SorusuAjanın Çözüm Yolu (Reasoning)Karmaşık Matematik"Yıllık 600k maaşım ve 5 notum var, primim ne kadar?"1. Politikadan formülü bulur: (Maaş/12) * Katsayı2. 5 notunun katsayısını (2.5) çeker.3. calculator aracıyla hesaplar: 125.000 TLÇoklu Para Birimi"3 gün Paris, 2 gün Tokyo harcırahım nedir?"1. Avrupa (130 EUR) ve Asya (110 USD) günlük limitlerini bulur.2. Gün sayılarıyla çarpar.3. Para birimlerini karıştırmadan toplar: 390 EUR + 220 USDKoşullu İstisna"İşe dün başladım, evden çalışabilir miyim?"1. Genel kuralı (3 gün izin) bulur.2. İstisnayı yakalar: "Deneme süresinde (ilk 2 ay) yasak."3. Cevap: Hayır.Etik Kontrolü*"Tedarikçiden 100$ hediye geldi, alabilir miyim?"*1. Şirket limitini (50$) bulur.2. 100$ > 50$ karşılaştırmasını yapar.3. Cevap: Yasak.🏗️ Mimari ŞemasıKod snippet'igraph TD
+2️⃣ Gerekli Kütüphaneleri Yükleyin
+bash
+Kodu kopyala
+pip install -r requirements.txt
+3️⃣ API Anahtarını Tanımlayın
+Bu proje Groq API üzerinden Llama-3-70B modelini kullanır.
+
+Seçenek 1: main.py içinde
+python
+Kodu kopyala
+api_key = "gsk_..."
+Seçenek 2: Ortam değişkeni (önerilir)
+bash
+Kodu kopyala
+export GROQ_API_KEY="gsk_..."
+4️⃣ Ajanı Başlatın
+bash
+Kodu kopyala
+python main.py
+🧪 Test Senaryoları (Benchmarks)
+Senaryo Tipi	Kullanıcı Sorusu	Ajanın Muhakeme Süreci
+Karmaşık Matematik	“Yıllık 600k maaşım ve 5 notum var, primim ne kadar?”	Maaş/12 → Katsayı (2.5) → Hesaplama → 125.000 TL
+Çoklu Para Birimi	“3 gün Paris, 2 gün Tokyo harcırahım nedir?”	3×130 EUR + 2×110 USD → 390 EUR + 220 USD
+Koşullu İstisna	“İşe dün başladım, evden çalışabilir miyim?”	Deneme süresi kontrolü → Hayır
+Etik Kontrolü	“Tedarikçiden 100$ hediye geldi, alabilir miyim?”	Limit (50$) < 100$ → Yasak
+
+🏗️ Mimari Şeması
+mermaid
+Kodu kopyala
+graph TD
     User[Kullanıcı Sorusu] --> Agent[Llama-3 ReAct Ajanı]
-    Agent -- Düşünce (Thought) --> Router{Araç Seçimi}
-    
-    Router -- Politika Sorusu --> RAG[Vektör Veritabanı]
-    Router -- Hesaplama --> Calc[Hesap Makinesi]
-    
-    RAG -- Ham Metin --> Agent
-    Calc -- Sayısal Sonuç --> Agent
-    
-    Agent -- Muhakeme (Reasoning) --> Final[Nihai Cevap]
+    Agent --> Thought[Düşünce]
+    Thought --> Router{Araç Seçimi}
+
+    Router -->|Politika| RAG[Vektör Veritabanı]
+    Router -->|Hesaplama| Calc[Hesap Makinesi]
+
+    RAG --> Agent
+    Calc --> Agent
+
+    Agent --> Final[Nihai Cevap]
