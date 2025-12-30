@@ -45,10 +45,7 @@ Proje, Türkiye Cumhuriyeti'nin temel çalışma yasası olan **4857 Sayılı İ
 
 ##  Çalışma Mantığı
 
-
-
-```mermaid
-graph TD
+```
     User[Kullanıcı: 'Fazla mesai ücretim ne kadar?'] --> Agent[Llama-3 Hukuk Ajanı]
     Agent --> Thought[Düşünce: Oranı kanundan bulmalıyım]
     Thought --> Router{Araç Seçimi}
@@ -65,7 +62,7 @@ graph TD
 
     Obs2 --> Agent
     Agent --> Final[Cevap: 'Saatlik fazla mesai ücretiniz X TL'dir.']
-
+```
  Kurulum ve Çalıştırma
 1️⃣ Gereksinimler
 Python 3.8+
