@@ -104,7 +104,7 @@ graph TD
     Obs2 --> Agent
 
     Agent --> Final[Nihai Hukuki Cevap]
-
+```
 
 🛠️ Kurulum ve Çalıştırma
 1️⃣ Gereksinimler
