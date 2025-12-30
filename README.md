@@ -74,8 +74,8 @@ document.pdf (İş Kanunu dosyası proje dizininde olmalıdır)
 2️⃣ Kurulum
 Bash
 
-git clone [https://github.com/KULLANICI_ADINIZ/Is-Hukuku-Ajan.git](https://github.com/KULLANICI_ADINIZ/Is-Hukuku-Ajan.git)
-cd Is-Hukuku-Ajan
+git clone [https://github.com/sinemdurmaz/Agent.git](https://github.com/sinemdurmaz/Agent.git)
+cd Agent
 pip install -r requirements.txt
 3️⃣ API Anahtarı
 Projenin çalışması için Groq API anahtarınızı tanımlayın:
@@ -86,7 +86,7 @@ export GROQ_API_KEY="gsk_..."
 4️⃣ Çalıştırma
 Bash
 
-python ik_agen.py
+python is_hukuku.py
 
  Lisans
 Bu proje eğitim amaçlı geliştirilmiştir ve hukuki tavsiye niteliği taşımaz. Nihai kararlar için bir hukukçuya danışılmalıdır. MIT License altında lisanslanmıştır.
