@@ -89,20 +89,25 @@ Projede, gerçekçi bir kurumsal simülasyon için
 ```bash
 git clone https://github.com/KULLANICI_ADINIZ/HR-ReAct-Agent.git
 cd HR-ReAct-Agent
+
 2️⃣ Gerekli Kütüphaneleri Yükleyin
 bash
 pip install -r requirements.txt
+
 3️⃣ API Anahtarını Tanımlayın
 Bu proje Groq API üzerinden Llama-3-70B modelini kullanır.
 
 Seçenek 1: main.py içinde
 python
 api_key = "gsk_..."
+
 Seçenek 2: Ortam değişkeni (önerilir)
 bash
 export GROQ_API_KEY="gsk_..."
+
 4️⃣ Ajanı Başlatın
 python main.py
+
 🧪 Test Senaryoları (Benchmarks)
 Senaryo Tipi	Kullanıcı Sorusu	Ajanın Muhakeme Süreci
 Karmaşık Matematik	“Yıllık 600k maaşım ve 5 notum var, primim ne kadar?”	Maaş/12 → Katsayı (2.5) → Hesaplama → 125.000 TL
