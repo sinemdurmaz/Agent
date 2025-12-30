@@ -71,7 +71,7 @@ ve bunları **calculator** aracıyla hesaplar.
 Bu proje, genel hukuk alanını kapsayan geniş bir veri kümesi kullanır.
 
 ### 📌 Kullanılan Veri
-- **HukukV4 Dataset (HuggingFace)**
+- **[HukukV4 Dataset ](https://huggingface.co/akerem1427/Hukukv4)(HuggingFace)**
 - Anayasa Hukuku
 - Medeni Hukuk
 - Ceza Hukuku
