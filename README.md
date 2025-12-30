@@ -72,6 +72,7 @@ Groq API Anahtarı (Llama-3 Modeli için)
 document.pdf (İş Kanunu dosyası proje dizininde olmalıdır)
 
 2️⃣ Kurulum
+
 Bash
 
 git clone [https://github.com/sinemdurmaz/Agent.git](https://github.com/sinemdurmaz/Agent.git)
@@ -86,6 +87,7 @@ Bash
 export GROQ_API_KEY="gsk_..."
 
 4️⃣ Çalıştırma
+
 Bash
 
 python is_hukuku.py
